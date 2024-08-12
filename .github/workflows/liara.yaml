@@ -19,7 +19,7 @@ jobs:
         run: |
           npm i -g @liara/cli@6
           if [ ${{ github.ref }} == 'refs/heads/main' ]; then
-            # liara deploy --app="rosebal-nest-prd" --api-token="$LIARA_TOKEN" --no-app-logs --port=3000
+            liara deploy --app="rosebal-nest-prd" --api-token="$LIARA_TOKEN" --no-app-logs --port=3000
           else
             liara deploy --app="rosebal-nest-dev" --api-token="$LIARA_TOKEN" --no-app-logs --port=3000
           fi
