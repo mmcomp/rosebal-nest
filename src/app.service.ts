@@ -83,6 +83,10 @@ export class AppService {
       new Date().getMinutes() +
       ':' +
       new Date().getSeconds();
+    console.log(
+      '[getToBeDeletedTicketIds] query',
+      `SELECT id, booking_class FROM tickets WHERE expire_date < '${now}' AND deleted_at IS NULL AND status < 2`,
+    );
     return this.dataSource.query(
       `SELECT id, booking_class FROM tickets WHERE expire_date < '${now}' AND deleted_at IS NULL AND status < 2`,
     );
