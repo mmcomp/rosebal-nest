@@ -4,5 +4,13 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   await app.listen(3000, '0.0.0.0');
+
+  const now =
+    new Date().getFullYear() +
+    '-' +
+    (new Date().getMonth() + 1) +
+    '-' +
+    new Date().getDate();
+  console.log(now);
 }
 bootstrap();

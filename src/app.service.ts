@@ -71,8 +71,20 @@ export class AppService {
 
   getToBeDeletedTicketIds(): Promise<{ id: string; booking_class: string }[]> {
     console.log('[getToBeDeletedTicketIds]');
+    const now =
+      new Date().getFullYear() +
+      '-' +
+      (new Date().getMonth() + 1) +
+      '-' +
+      new Date().getDate() +
+      ' ' +
+      new Date().getHours() +
+      ':' +
+      new Date().getMinutes() +
+      ':' +
+      new Date().getSeconds();
     return this.dataSource.query(
-      `SELECT id, booking_class FROM tickets WHERE expire_date < NOW() AND deleted_at IS NULL AND status < 2`,
+      `SELECT id, booking_class FROM tickets WHERE expire_date < '${now}' AND deleted_at IS NULL AND status < 2`,
     );
   }
 
