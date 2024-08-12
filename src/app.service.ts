@@ -42,6 +42,9 @@ export class AppService {
     await this.dataSource.query(
       `UPDATE tickets SET deleted_at = NOW() WHERE id = '${id}'`,
     );
+    await this.dataSource.query(
+      `UPDATE ticket_items SET deleted_at = NOW() WHERE ticket_id = '${id}'`,
+    );
   }
 
   async fixCapacity(id: string, capacity_type: string) {
